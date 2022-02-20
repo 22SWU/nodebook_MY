@@ -64,7 +64,7 @@ async function getComment(id) {
                     return alert('내용을 반드시 입력하셔야 합니다');
                 }
                 try {
-                    await axios.path(`/comments/${comment.id}`, {comment: newComment});
+                    await axios.pacth(`/comments/${comment.id}`, {comment: newComment});
                     getComment(id);
                 } catch (err) {
                     console.error(err);
@@ -74,7 +74,7 @@ async function getComment(id) {
             remove.textContent = '삭제';
             remove.addEventListener('click', async() => {// 삭제 클릭 시
                 try {
-                    await axios.delete(`/comments${comment.id}`);
+                    await axios.delete(`/comments/${comment.id}`);
                     getComment(id);
                 } catch (err){
                     console.error(err);

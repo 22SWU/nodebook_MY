@@ -17,7 +17,7 @@ module.exports = class User extends Sequelize.Model {
                 allowNull: false,
             },
             comment: {
-                type: Sequelize.DATE,
+                type: Sequelize.TEXT,
                 allowNull: true,
             },
             created_at: {
