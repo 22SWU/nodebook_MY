@@ -8,6 +8,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 const pageRouter = require('./routes/page');
+const { sequelize } = require('./models');
 const { application } = require('express');
 
 const app = express();
@@ -17,6 +18,14 @@ nunjucks.configure('views', {
     express: app,
     watch: true,
 });
+sequelize.sync({ force: false })
+    .then(() => {
+        console.log('데이터베이스 연결 성공');
+    })
+    .catch((err) => {
+        console.error(err);
+    });
+// 모델을 서버와 연동 -> 서버쪽 세팅 완료
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
