@@ -23,5 +23,11 @@ module.exports = class Post extends Sequelize.Model {
         });
     }
 
-    static associate(db) {}
+    static associate(db) {
+        db.Post.belongsTo(db.User);
+        db.Post.belongsToMany(db.Hashtag, {through: 'PostHashtag'});
+    }
 };
+
+// User모델과  Post모델은 1:N 관계 = belongsTo로 연결
+// Post보델과 Hashtag모델은 N:M 관계 = PostHashtag라는 중간 모델이 생김
