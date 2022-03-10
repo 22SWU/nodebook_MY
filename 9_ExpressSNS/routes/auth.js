@@ -25,3 +25,6 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
     }
 });
 
+router.post('/login', isNotLoggedIn, (req, res, next) => {
+    
+})
